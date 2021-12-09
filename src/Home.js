@@ -13,6 +13,8 @@ const Home = () => {
         setBlogs(newBlogs);
     }
 
+    useEffect();
+
 
     return (
         <div className="home">
