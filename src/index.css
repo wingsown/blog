@@ -77,6 +77,15 @@
   cursor: pointer;
 }
 
+.blog-details button {
+  background: #262626;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 /* Create New Blog Form */
 
 .create {
