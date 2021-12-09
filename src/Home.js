@@ -22,11 +22,11 @@ const Home = () => {
 
     return (
         <div className="home">
-           <BlogList
+           { blogs && <BlogList
             blogs={blogs}
             title="All Blogs"
             handleDelete={handleDelete}
-           />
+           />}
         </div>
       );
 }
