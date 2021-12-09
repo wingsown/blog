@@ -52,11 +52,10 @@ const Create = () => {
                     <option value="pogi">Pogi</option>
                 </select>
                 { !isPending && <button>Add Blog</button> }
-                { isPending && <button>Adding Blog...</button> }
+                { isPending && <button disabled>Adding Blog...</button> }
             </form>
         </div>
       );
 }
  
-export default Create
-;
+export default Create;
