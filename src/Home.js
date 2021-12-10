@@ -34,14 +34,6 @@ const Home = () => {
     
 // }
 
-    const deleteBlog = (id) => {
-      const blogDoc = doc(db, "blogs", id);
-       deleteDoc(blogDoc)
-       .then(() => {
-         history.push('/');
-       })
-    }
-
     return (
         <div className="home">
             { blogs && <BlogList blogs={blogs} title="Blogs"/>}
