@@ -1,34 +1,48 @@
 import { useHistory, useParams } from "react-router";
-import useFetch from "./useFetch";
+import { useState, useEffect } from 'react';
+import { db } from './firebase-config';
+import { collection, getDocs } from 'firebase/firestore';
 
 
 const BlogDetails = () => {
-    const { id } = useParams();
-    const { data: blog, error, isPending } = useFetch('http://localhost:8000/blogs/' + id);
+    // const { id } = useParams();
+    // const { data: blog, error, isPending } = useFetch('http://localhost:8000/blogs/' + id);
+    
+    const [blogs, setBlogs] = useState([]);
+    const blogsRef = collection(db, "blogs");
     const history = useHistory();
 
-    const handleClick = () => {
-        fetch('http://localhost:8000/blogs/' + blog.id, {
-            method: 'DELETE'
-        }).then(() => {
-            history.push('/');
-        })
+  useEffect(() => {
+    
+    const getBlogs = async () => {
+      const data = await getDocs(blogsRef);
+      setBlogs(data.docs.map((doc) => ({...doc.data(), id: doc.id })))
     }
+
+    getBlogs();
+
+  }, []);
+
+    // const handleClick = () => {
+    //     fetch('http://localhost:8000/blogs/' + blog.id, {
+    //         method: 'DELETE'
+    //     }).then(() => {
+    //         history.push('/');
+    //     })
+    // }
 
 
 
     return (  
         <div className="blog-details">
-            { isPending && <div>Loading...</div>}
-            { error && <div>{ error }</div> }
-            { blog && (
+            {blogs.map((blog) => (
                 <article>
                     <h2>{ blog.title }</h2>
                     <p>Written by { blog.author }</p>
                     <div>{ blog.body }</div>
-                    <button onClick={handleClick}>Delete</button>
+                    <button>Delete</button>
                 </article>
-            )}
+            ))}
         </div>
     );
 }
