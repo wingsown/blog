@@ -1,15 +1,14 @@
 import { useEffect, useState} from 'react';
-import { useHistory } from 'react-router';
 import BlogList from './BlogList';
 import { db } from './firebase-config';
-import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 
 const Home = () => {
   // const { data: blogs, isPending, error } = useFetch('http://localhost:8000/blogs');
 
   const [blogs, setBlogs] = useState([]);
   const blogsRef = collection(db, "blogs");
-  const history = useHistory();
+  
 
   useEffect(() => {
     
@@ -20,7 +19,7 @@ const Home = () => {
 
     getBlogs();
 
-  }, []);
+  }, [blogsRef]);
 
 //   const updateBlog = async (id, title, body, author) => {
 //     const blogDoc = doc(db, "blogs", id);

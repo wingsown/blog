@@ -1,4 +1,4 @@
-import { useHistory, useParams } from "react-router";
+import { useHistory } from "react-router";
 import { useState, useEffect } from 'react';
 import { db } from './firebase-config';
 import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
@@ -21,7 +21,7 @@ const BlogDetails = () => {
 
     getBlogs();
 
-  }, []);
+  }, [blogsRef]);
 
     // const handleClick = () => {
     //     fetch('http://localhost:8000/blogs/' + blog.id, {
