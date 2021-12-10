@@ -43,6 +43,7 @@ const Create = () => {
         }).then(() => {
             console.log('New blog added');
             setIsPending(false);
+            history.push('/');
         })
     }
 
