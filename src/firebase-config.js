@@ -7,8 +7,8 @@ const firebaseConfig = {
     authDomain: "blog-a3fbd.firebaseapp.com",
     projectId: "blog-a3fbd",
     storageBucket: "blog-a3fbd.appspot.com",
-    messagingSenderId: "262012698092",
-    appId: "1:262012698092:web:92e875056b1cb0034994c9",
+    messagingSenderId: process.env.MESSAGINGSENDER_ID,
+    appId: process.env.APP_ID,
     // eslint-disable-next-line
     measurementId: "${config.measurementId}"
   };
